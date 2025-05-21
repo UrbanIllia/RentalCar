@@ -1,0 +1,32 @@
+.hero {
+  position: relative;
+  text-align: center;
+  padding-top: 80px; /* Для хедера */
+}
+
+.heroImage {
+  width: 100%;
+  height: auto;
+}
+
+.title {
+  font-size: 48px;
+  color: #fff;
+  margin: 20px 0;
+}
+
+.subtitle {
+  font-size: 24px;
+  color: #ccc;
+  margin-bottom: 30px;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

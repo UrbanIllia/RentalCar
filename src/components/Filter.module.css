@@ -1,0 +1,20 @@
+.filter {
+  display: flex;
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.filter select,
+.filter input {
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.filter button {
+  padding: 10px 20px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

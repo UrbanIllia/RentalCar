@@ -1,0 +1,27 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #a91616;
+  /* padding: 20px 120px; */
+  /* position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; */
+}
+
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 16px;
+}
+
+.nav a.active {
+  color: #ffd700;
+}
+
+.logo img {
+  cursor: pointer;
+}

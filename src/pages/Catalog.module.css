@@ -1,0 +1,22 @@
+.catalog {
+  padding-top: 80px; /* Для хедера */
+  padding: 20px 120px;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px 48px;
+  margin-top: 20px;
+}
+
+.loadMore {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
