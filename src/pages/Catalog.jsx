@@ -24,24 +24,26 @@ const Catalog = () => {
   };
 
   return (
-    <div className={css.catalog}>
-      <Filter />
-      {loading ? (
-        <div>Loading...</div>
-      ) : (
-        <>
-          <div className={css.cardGrid}>
-            {cars.map((car) => (
-              <CarCard key={car.id} car={car} />
-            ))}
-          </div>
-          {page < totalPages && (
-            <button onClick={handleLoadMore} className={css.loadMore}>
-              Load More
-            </button>
-          )}
-        </>
-      )}
+    <div className="container">
+      <div className={css.catalog}>
+        <Filter />
+        {loading ? (
+          <div className={css.loading}>Loading...</div>
+        ) : (
+          <>
+            <div className={css.cardGrid}>
+              {cars.map((car) => (
+                <CarCard key={car.id} car={car} />
+              ))}
+            </div>
+            {page < totalPages && (
+              <button onClick={handleLoadMore} className={css.loadMore}>
+                Load More
+              </button>
+            )}
+          </>
+        )}
+      </div>
     </div>
   );
 };

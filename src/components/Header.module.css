@@ -1,25 +1,38 @@
 .header {
+  background: var(--badges);
+}
+.wrap {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background: #a91616;
-  /* padding: 20px 120px; */
-  /* position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000; */
+  padding-top: 26px;
+  padding-bottom: 26px;
 }
-
+.iconLogo {
+  width: 101px;
+  height: 16px;
+}
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  align-items: center;
+  gap: 32px;
+}
 .nav a {
-  color: #fff;
-  text-decoration: none;
-  margin-left: 20px;
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
   font-size: 16px;
+  line-height: 1.25;
+  text-align: center;
+  color: var(--main);
+  text-decoration: none;
 }
 
 .nav a.active {
-  color: #ffd700;
+  color: var(--button);
 }
 
 .logo img {
