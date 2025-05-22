@@ -7,6 +7,18 @@
   align-items: center;
   margin-bottom: 56px;
 }
+.labelWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.label {
+  font-family: "Manrope", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.33333;
+  color: var(--gray);
+}
 .filter button {
   font-family: "Manrope", sans-serif;
   border: none;
@@ -21,6 +33,7 @@
   height: 44px;
   color: var(--white);
   transition: all 250ms ease-in-out;
+  margin-left: 16px;
 }
 .filter button:hover {
   background-color: var(--button-hover);
