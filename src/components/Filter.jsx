@@ -20,7 +20,12 @@ const Filter = () => {
 
   return (
     <div className={css.filter}>
-      <select name="brand" value={filters.brand} onChange={handleFilterChange}>
+      <select
+        name="brand"
+        value={filters.brand}
+        onChange={handleFilterChange}
+        className={css.checkBrand}
+      >
         <option value="">Choose a brand</option>
         {brands.map((brand) => (
           <option key={brand} value={brand}>
@@ -32,6 +37,7 @@ const Filter = () => {
         name="rentalPrice"
         value={filters.rentalPrice}
         onChange={handleFilterChange}
+        className={css.checkPrice}
       >
         <option value="">Choose a price</option>
         {[30, 40, 50, 60, 70].map((price) => (
@@ -40,13 +46,14 @@ const Filter = () => {
           </option>
         ))}
       </select>
-      <div>
+      <div className={css.iputWrap}>
         <input
           type="number"
           name="minMileage"
           value={filters.minMileage}
           onChange={handleFilterChange}
           placeholder="From"
+          className={css.inputFrom}
         />
         <input
           type="number"
@@ -54,6 +61,7 @@ const Filter = () => {
           value={filters.maxMileage}
           onChange={handleFilterChange}
           placeholder="To"
+          className={css.inputTo}
         />
       </div>
       <button onClick={() => dispatch(setFilters({}))}>Search</button>

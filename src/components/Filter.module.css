@@ -1,20 +1,70 @@
 .filter {
   display: flex;
-  gap: 20px;
-  padding: 20px 0;
+  flex-direction: row;
+  gap: 16px;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 56px;
 }
-
-.filter select,
-.filter input {
-  padding: 10px;
-  border-radius: 5px;
-}
-
 .filter button {
-  padding: 10px 20px;
-  background: #007bff;
-  color: #fff;
+  font-family: "Manrope", sans-serif;
   border: none;
-  border-radius: 5px;
+  padding: 12px 51px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.25;
   cursor: pointer;
+  background-color: var(--button);
+  max-width: 156px;
+  height: 44px;
+  color: var(--white);
+  transition: all 250ms ease-in-out;
+}
+.filter button:hover {
+  background-color: var(--button-hover);
+}
+.filter input,
+.filter select {
+  font-family: "Manrope", sans-serif;
+  padding: 12px 16px;
+  height: 44px;
+  background: var(--inputs);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--main);
+}
+/* ................................. */
+.checkBrand {
+  width: 204px;
+  border: none;
+  border-radius: 12px;
+}
+.checkPrice {
+  width: 196px;
+  border: none;
+  border-radius: 12px;
+}
+/* .............................. */
+.iputWrap {
+  display: flex;
+}
+.inputFrom {
+  width: 160px;
+  border: transparent;
+  border-right: 1px solid var(--gray-light);
+  border-radius: 12px 0 0 12px;
+  color: var(--main);
+}
+.inputTo {
+  width: 160px;
+  border-radius: 0 12px 12px 0;
+  color: var(--main);
+  border: transparent;
+}
+.inputFrom::placeholder,
+.inputTo::placeholder {
+  color: var(--main);
 }

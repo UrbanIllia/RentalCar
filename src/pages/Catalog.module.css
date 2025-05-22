@@ -6,17 +6,32 @@
 .cardGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 32px 48px;
-  margin-top: 20px;
+  gap: 48px 32px;
+  margin-bottom: 80px;
 }
 
 .loadMore {
+  font-family: "Manrope", sans-serif;
   display: block;
-  margin: 20px auto;
-  padding: 10px 20px;
-  background: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
+  border: 1px solid var(--button);
+  border-radius: 12px;
+  padding: 12px 38px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.25;
+  background-color: transparent;
+  color: var(--main);
   cursor: pointer;
+  width: 156px;
+  height: 44px;
+  white-space: nowrap;
+  transition: all 250ms ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+.loadMore:hover {
+  border: 1px solid var(--button-hover);
+  background-color: #e0e0e0;
 }

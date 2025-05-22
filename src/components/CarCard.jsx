@@ -1,20 +1,31 @@
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { addFavorite } from "../store/slices/favoritesSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addFavorite, removeFavorite } from "../store/slices/favoritesSlice";
+import { IoHeartOutline, IoHeartSharp } from "react-icons/io5";
 import css from "./CarCard.module.css";
 
 const CarCard = ({ car }) => {
   const dispatch = useDispatch();
 
-  // Функція для форматування пробігу (додаємо пробіл кожні 3 цифри)
+  const favorites = useSelector((state) => state.favorites);
+
+  const isFavorite = favorites.some((favCar) => favCar.id === car.id);
+
   const formatMileage = (mileage) => {
     return mileage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
   };
 
-  // Додаємо авто до обраних
-  const handleAddToFavorites = () => {
-    dispatch(addFavorite(car));
+  const handleFavoriteToggle = () => {
+    if (isFavorite) {
+      dispatch(removeFavorite(car.id));
+    } else {
+      dispatch(addFavorite(car));
+    }
   };
+
+  const fullAddress = car.address;
+  const parts = fullAddress.split(", ");
+  const shortAddress = parts.slice(1).join(", ");
 
   return (
     <div className={css.card}>
@@ -24,16 +35,28 @@ const CarCard = ({ car }) => {
         className={css.carImage}
       />
       <div className={css.info}>
-        <h3>{`${car.brand} ${car.model}, ${car.year}`}</h3>
-        <p className={css.price}>${car.rentalPrice}</p>
-        <p>{car.address}</p>
-        <p>{car.rentalCompany}</p>
-        <p>
-          {car.type} | {formatMileage(car.mileage)} km
-        </p>
+        <div className={css.infoMainWrap}>
+          <h3 className={css.infoTitle}>
+            {car.brand} <span className={css.span}>{car.model}</span>,{" "}
+            {car.year}
+          </h3>
+          <p className={css.price}>${car.rentalPrice}</p>
+        </div>
+        <div className={css.infoAdress}>
+          <p className={css.infoAdressP}>{shortAddress}</p>
+          <p className={css.infoAdressCompany}> {car.rentalCompany}</p>
+        </div>
+        <div className={css.infoAdress2}>
+          <p className={css.infoAdressType}>{car.type}</p>
+          <p className={css.infoAdressKm}>{formatMileage(car.mileage)} km</p>
+        </div>
       </div>
-      <button onClick={handleAddToFavorites} className={css.favButton}>
-        Add to Favorites
+      <button onClick={handleFavoriteToggle} className={css.favButton}>
+        {isFavorite ? (
+          <IoHeartSharp className={css.iconFull} size={20} color="#3470ff" />
+        ) : (
+          <IoHeartOutline className={css.iconEmpty} size={20} color="white" />
+        )}
       </button>
       <Link to={`/catalog/${car.id}`} className={css.readMore}>
         Read more
