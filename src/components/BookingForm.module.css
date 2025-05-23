@@ -1,58 +1,181 @@
 .form {
-  margin-top: 40px;
   width: 640px;
   height: 488px;
-  padding: 20px;
-  background: #2c003e;
-  border: 2px solid #ffd700;
+  padding: 32px;
+  background: var(--white);
+  border: 1px solid var(--gray-light);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 24px;
 }
-
+/* ............................. */
 .form h3 {
-  margin: 0;
-  color: #ffd700;
-  font-size: 24px;
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
+  color: var(--main);
+  margin-bottom: 8px;
 }
 
 .form p {
-  margin: 0;
-  color: #b19cd9;
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
   font-size: 16px;
+  line-height: 125%;
+  color: var(--gray);
 }
-
-.form input,
-.form textarea {
-  padding: 10px;
-  border: 1px solid #ffd700;
-  border-radius: 5px;
-  background: #4b0082;
-  color: #e6e6fa;
+/* .................................. */
+.formInputs {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.formInput {
+  width: 100%;
+  margin-bottom: 16px;
+}
+.input,
+.textarea {
+  font-family: "Manrope", sans-serif;
+  width: 100%;
+  padding: 14px 20px;
+  font-weight: 500;
   font-size: 16px;
+  line-height: 125%;
+  color: var(--gray);
+  border-radius: 12px;
+  border: none;
+  background-color: var(--inputs);
 }
 
 .form input::placeholder,
 .form textarea::placeholder {
-  color: #b19cd9;
+  color: var(--gray);
 }
 
-.form textarea {
+.textarea {
   height: 100px;
   resize: none;
 }
 
-.form button {
-  padding: 10px;
-  background: linear-gradient(135deg, #007bff, #0056b3);
+.btn {
+  font-family: "Manrope", sans-serif;
+  border-radius: 12px;
+  margin: 12px auto 0;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 125%;
+  padding: 12px 58px;
+  max-width: 156px;
+  height: 44px;
   border: none;
-  border-radius: 5px;
-  color: #fff;
   cursor: pointer;
-  transition: background 0.3s ease;
+  background-color: var(--button);
+  color: var(--white);
+  transition: all 250ms ease-in-out;
 }
 
-.form button:hover {
-  background: linear-gradient(135deg, #0056b3, #003d82);
+.btn:hover {
+  background-color: var(--button);
+}
+/* .......................................................... */
+.datePickerWrapper {
+  width: 100%;
+}
+.datePickerCalendar {
+  border: 1px solid var(--button);
+  border-radius: 12px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  overflow: hidden;
+}
+:global(.react-datepicker__header) {
+  background-color: var(--white);
+  border-bottom: 1px solid var(--button);
+  padding: 12px 0;
+}
+
+:global(.react-datepicker__current-month) {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 120%;
+  text-align: center;
+  color: var(--main);
+}
+
+:global(.react-datepicker__day-name),
+:global(.react-datepicker__day) {
+  width: 33px;
+  line-height: 33px;
+  text-align: center;
+  color: var(--main);
+}
+:global(.react-datepicker__day-name) {
+  color: var(--gray);
+}
+:global(.react-datepicker__day--outside-month) {
+  color: var(--gray);
+  opacity: 0.5;
+}
+
+:global(.react-datepicker__day--selected),
+:global(.react-datepicker__day--keyboard-selected) {
+  background-color: var(--button);
+  color: white;
+  border-radius: 32px;
+  width: 36px;
+  height: 32px;
+}
+
+:global(.react-datepicker__day--today) {
+  font-weight: bold;
+  background-color: #e6f0ff;
+}
+
+:global(.react-datepicker__day:hover) {
+  background-color: #f0f0f0;
+  border-radius: 4px;
+}
+
+:global(.react-datepicker__navigation) {
+  top: 8px;
+}
+
+:global(.react-datepicker__navigation--previous),
+:global(.react-datepicker__navigation--next) {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+:global(.react-datepicker__navigation-icon--previous::before),
+:global(.react-datepicker__navigation-icon--next::before) {
+  border-color: var(--button) !important;
+  width: 12px;
+  height: 12px;
+}
+
+:global(
+    .react-datepicker__navigation--previous:hover
+      .react-datepicker__navigation-icon--previous::before
+  ),
+:global(
+    .react-datepicker__navigation--next:hover
+      .react-datepicker__navigation-icon--next::before
+  ) {
+  border-color: var(--button-hover) !important;
+}
+:global(
+    .react-datepicker-popper[data-placement^="top"] .react-datepicker__triangle
+  ) {
+  fill: var(--white) !important;
+}
+:global(
+    .react-datepicker-popper[data-placement^="bottom"]
+      .react-datepicker__triangle
+  ) {
+  fill: var(--white) !important;
 }

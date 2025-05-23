@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
+import { parseAddress } from "../utils/addressUtils";
 import { useDispatch, useSelector } from "react-redux";
 import { addFavorite, removeFavorite } from "../store/slices/favoritesSlice";
 import { IoHeartOutline, IoHeartSharp } from "react-icons/io5";
 import css from "./CarCard.module.css";
 
 const CarCard = ({ car }) => {
+  const { city, country } = parseAddress(car.address);
   const dispatch = useDispatch();
 
   const favorites = useSelector((state) => state.favorites);
@@ -23,10 +25,6 @@ const CarCard = ({ car }) => {
     }
   };
 
-  const fullAddress = car.address;
-  const parts = fullAddress.split(", ");
-  const shortAddress = parts.slice(1).join(", ");
-
   return (
     <div className={css.card}>
       <img
@@ -43,7 +41,8 @@ const CarCard = ({ car }) => {
           <p className={css.price}>${car.rentalPrice}</p>
         </div>
         <div className={css.infoAdress}>
-          <p className={css.infoAdressP}>{shortAddress}</p>
+          <p className={css.infoAdressCity}>{city}</p>
+          <p className={css.infoAdressCountry}>{country}</p>
           <p className={css.infoAdressCompany}> {car.rentalCompany}</p>
         </div>
         <div className={css.infoAdress2}>

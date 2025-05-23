@@ -48,7 +48,8 @@
   gap: 12px;
   margin-bottom: 4px;
 }
-.infoAdressP,
+.infoAdressCity,
+.infoAdressCountry,
 .infoAdressCompany,
 .infoAdressType,
 .infoAdressKm {
@@ -59,6 +60,7 @@
   line-height: 1.33333;
   color: var(--gray);
 }
+.infoAdressCountry::before,
 .infoAdressCompany::before,
 .infoAdressKm::before {
   content: "";

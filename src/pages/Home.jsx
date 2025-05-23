@@ -9,7 +9,7 @@ const Home = () => {
         <p className={css.subtitle}>
           Reliable and budget-friendly rentals for any journey
         </p>
-        <Link to="/catalog" className={css.button}>
+        <Link to="/catalo" className={css.button}>
           View Catalog
         </Link>
       </div>

@@ -72,3 +72,7 @@ input,
 textarea {
   outline: none;
 }
+.react-datepicker-popper[data-placement^="top"] .react-datepicker__triangle {
+  fill: #e32a2a;
+  color: #160303;
+}
