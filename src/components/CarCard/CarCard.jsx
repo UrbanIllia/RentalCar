@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { parseAddress } from "../utils/addressUtils";
 import { useDispatch, useSelector } from "react-redux";
-import { addFavorite, removeFavorite } from "../store/slices/favoritesSlice";
 import { IoHeartOutline, IoHeartSharp } from "react-icons/io5";
+import { parseAddress } from "../../utils/addressUtils";
+import { addFavorite, removeFavorite } from "../../store/slices/favoritesSlice";
 import css from "./CarCard.module.css";
 
 const CarCard = ({ car }) => {
@@ -52,9 +52,9 @@ const CarCard = ({ car }) => {
       </div>
       <button onClick={handleFavoriteToggle} className={css.favButton}>
         {isFavorite ? (
-          <IoHeartSharp className={css.iconFull} size={20} color="#3470ff" />
+          <IoHeartSharp className={css.iconFull} size={24} color="#3470ff" />
         ) : (
-          <IoHeartOutline className={css.iconEmpty} size={20} color="white" />
+          <IoHeartOutline className={css.iconEmpty} size={24} color="white" />
         )}
       </button>
       <Link to={`/catalog/${car.id}`} className={css.readMore}>

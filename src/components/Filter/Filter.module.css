@@ -21,6 +21,7 @@
 }
 .filter button {
   font-family: "Manrope", sans-serif;
+  align-self: flex-end;
   border: none;
   padding: 12px 51px;
   border-radius: 12px;
@@ -33,7 +34,6 @@
   height: 44px;
   color: var(--white);
   transition: all 250ms ease-in-out;
-  margin-left: 16px;
 }
 .filter button:hover {
   background-color: var(--button-hover);

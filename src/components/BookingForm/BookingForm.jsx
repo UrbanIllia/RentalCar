@@ -1,4 +1,3 @@
-import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import DatePicker from "react-datepicker";
@@ -8,7 +7,15 @@ import css from "./BookingForm.module.css";
 const validationSchema = Yup.object({
   name: Yup.string()
     .min(2, "Name must be at least 2 characters")
-    .required("Name is required"),
+    .required("Name is required")
+    .test(
+      "no-consecutive-spaces",
+      "Multiple consecutive spaces are not allowed",
+      (value) => {
+        if (!value) return true;
+        return !/\s{2,}/g.test(value);
+      }
+    ),
   email: Yup.string()
     .email("Invalid email address")
     .required("Email is required"),
@@ -24,7 +31,7 @@ const validationSchema = Yup.object({
   comment: Yup.string().max(500, "Comment must be 500 characters or less"),
 });
 
-const BookingForm = ({ carId }) => {
+const BookingForm = ({ carId, car }) => {
   const initialValues = {
     name: "",
     email: "",
@@ -33,8 +40,33 @@ const BookingForm = ({ carId }) => {
   };
 
   const handleSubmit = (values, { resetForm }) => {
-    alert(`Booking for car ${carId} successful!`);
-    resetForm();
+    try {
+      const carIdSlice = carId.slice(0, 4);
+
+      const booking = {
+        ...values,
+        carId,
+        carIdSlice,
+        brand: car.brand,
+        model: car.model,
+        createdAt: new Date().toISOString(),
+      };
+      const bookings = JSON.parse(localStorage.getItem("bookings") || "[]");
+      bookings.push(booking);
+      localStorage.setItem("bookings", JSON.stringify(bookings));
+      console.log(
+        "After adding:",
+        JSON.parse(localStorage.getItem("bookings"))
+      );
+      alert(
+        `Booking for ${car.brand} ${car.model} (${carIdSlice}) successful!`
+      );
+
+      resetForm();
+    } catch (error) {
+      console.error("Error saving to localStorage:", error);
+      alert("Failed to save booking. Please try again.");
+    }
   };
 
   return (

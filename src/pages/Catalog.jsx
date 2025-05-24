@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCars, setLoading, setPage } from "../store/slices/carsSlice";
 import { fetchCars } from "../services/api";
-import Filter from "../components/Filter";
-import CarCard from "../components/CarCard";
+import Filter from "../components/Filter/Filter";
+import CarCard from "../components/CarCard/CarCard";
 import css from "./Catalog.module.css";
 
 const Catalog = () => {
