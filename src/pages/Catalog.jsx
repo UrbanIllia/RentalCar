@@ -15,7 +15,9 @@ const Catalog = () => {
   useEffect(() => {
     dispatch(setLoading(true));
     fetchCars({ ...filters, page, limit: 12 })
-      .then((data) => dispatch(setCars(data)))
+      .then((data) => {
+        dispatch(setCars(data)); // Загружаем данные
+      })
       .finally(() => dispatch(setLoading(false)));
   }, [dispatch, filters, page]);
 
@@ -27,7 +29,7 @@ const Catalog = () => {
     <div className="container">
       <div className={css.catalog}>
         <Filter />
-        {loading ? (
+        {loading && cars.length === 0 ? (
           <div className={css.loading}>Loading...</div>
         ) : (
           <>

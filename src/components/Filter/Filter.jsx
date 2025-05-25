@@ -10,6 +10,7 @@ const Filter = () => {
   const dispatch = useDispatch();
   const { filters } = useSelector((state) => state.cars);
   const [brands, setBrands] = useState([]);
+  const [localFilters, setLocalFilters] = useState({ ...filters });
   const brandId = useId();
   const priceId = useId();
   const kmId = useId();
@@ -20,7 +21,14 @@ const Filter = () => {
 
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
-    dispatch(setFilters({ [name]: value }));
+    setLocalFilters((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSearch = () => {
+    dispatch(setFilters(localFilters));
   };
 
   return (
@@ -28,7 +36,7 @@ const Filter = () => {
       <SelectFilter
         label="Car brand"
         name="brand"
-        value={filters.brand}
+        value={localFilters.brand}
         options={brands}
         onChange={handleFilterChange}
         id={brandId}
@@ -36,7 +44,7 @@ const Filter = () => {
       <SelectFilter
         label="Price/ 1 hour"
         name="rentalPrice"
-        value={filters.rentalPrice}
+        value={localFilters.rentalPrice}
         options={[30, 40, 50, 60, 70, 80, 90, 100]}
         onChange={handleFilterChange}
         id={priceId}
@@ -45,12 +53,12 @@ const Filter = () => {
         label="Сar mileage / km"
         minName="minMileage"
         maxName="maxMileage"
-        minValue={filters.minMileage}
-        maxValue={filters.maxMileage}
+        minValue={localFilters.minMileage}
+        maxValue={localFilters.maxMileage}
         onChange={handleFilterChange}
         id={kmId}
       />
-      <button onClick={() => dispatch(setFilters({}))}>Search</button>
+      <button onClick={handleSearch}>Search</button>
     </div>
   );
 };

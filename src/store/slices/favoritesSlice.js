@@ -1,16 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// Инициализация состояния из localStorage
+const initialState = JSON.parse(localStorage.getItem("favorites")) || [];
+
 const favoritesSlice = createSlice({
   name: "favorites",
-  initialState: [],
+  initialState,
   reducers: {
     addFavorite: (state, action) => {
       if (!state.some((car) => car.id === action.payload.id)) {
         state.push(action.payload);
       }
+      // Сохраняем в localStorage
+      localStorage.setItem("favorites", JSON.stringify(state));
     },
     removeFavorite: (state, action) => {
-      return state.filter((car) => car.id !== action.payload);
+      const newState = state.filter((car) => car.id !== action.payload);
+      // Сохраняем в localStorage
+      localStorage.setItem("favorites", JSON.stringify(newState));
+      return newState;
     },
   },
 });
