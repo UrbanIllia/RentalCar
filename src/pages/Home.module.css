@@ -1,7 +1,6 @@
 .wrap {
   width: 1440px;
   margin: 0 auto;
-  /* padding: 0px 120px; */
 }
 .hero {
   background-image: url(../assets/img/hero.jpg);

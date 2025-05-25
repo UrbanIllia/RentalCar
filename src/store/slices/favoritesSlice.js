@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// Инициализация состояния из localStorage
 const initialState = JSON.parse(localStorage.getItem("favorites")) || [];
 
 const favoritesSlice = createSlice({
@@ -11,12 +10,12 @@ const favoritesSlice = createSlice({
       if (!state.some((car) => car.id === action.payload.id)) {
         state.push(action.payload);
       }
-      // Сохраняем в localStorage
+
       localStorage.setItem("favorites", JSON.stringify(state));
     },
     removeFavorite: (state, action) => {
       const newState = state.filter((car) => car.id !== action.payload);
-      // Сохраняем в localStorage
+
       localStorage.setItem("favorites", JSON.stringify(newState));
       return newState;
     },

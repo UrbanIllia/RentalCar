@@ -16,7 +16,7 @@ const Catalog = () => {
     dispatch(setLoading(true));
     fetchCars({ ...filters, page, limit: 12 })
       .then((data) => {
-        dispatch(setCars(data)); // Загружаем данные
+        dispatch(setCars(data));
       })
       .finally(() => dispatch(setLoading(false)));
   }, [dispatch, filters, page]);
